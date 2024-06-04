@@ -5,6 +5,8 @@ import jacopodemaio.exceptions.NotFoundExceptions;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
+import java.util.List;
+
 public class EventoDAO {
 //    questa classe avra metodi che interagiranno con la nostra classe evento
 //    come prima cosa dobbiamo passagli come paramentro l'EntityManager
@@ -50,4 +52,12 @@ public class EventoDAO {
         System.out.println("l'evento " + foundedEvento.getTitle() + " è stato eliminato con successo dal database");
 
     }
+
+    public List<Evento> queryForEvents() {
+        List<Evento> eventsList = em.createQuery("SELECT ev  FROM Evento ev").getResultList();
+
+        return eventsList;
+    }
+
+
 }
